@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+              android:id="@+id/childmode_shop_home"
+              android:layout_marginBottom="8dp"
+              android:padding="5dp"
+              android:background="@color/whiteBgColor">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingBottom="5dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:id="@+id/icon_child_shop"
+                android:src="@mipmap/boutique"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_child_shop"
+                android:text="精品店家"
+                android:textColor="@color/black_textcolor"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:layout_marginLeft="3dp"
+                android:layout_alignParentLeft="true"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/icon_goto"
+            android:id="@+id/all_enter"
+            android:text="全部"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+    <com.xgkj.xiangouapp.tools.CustomImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/advs_topic_civ"/>
+
+    <android.support.v7.app.AlertController.RecycleListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclev_shop_home">
+    </android.support.v7.app.AlertController.RecycleListView>
+</LinearLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="10dp"
+                android:layout_marginBottom="8dp"
+              android:gravity="center_vertical"
+              android:background="@color/whiteBgColor"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lefttv_actionbar"
+        android:drawableRight="@drawable/icon_addr"
+        android:text="成都"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:layout_alignBottom="@+id/news_actionbar"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:src="@mipmap/information"
+        android:id="@+id/news_actionbar"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/lefttv_actionbar"
+        android:layout_toLeftOf="@id/news_actionbar"
+        android:background="@drawable/roundedges"
+        android:gravity="center_vertical">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/search"
+            android:id="@+id/search_edit"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_actionbar"
+            android:focusable="false"
+            android:hint="清新可爱校园装"
+            android:textSize="13sp"
+            android:layout_toRightOf="@id/search_edit"
+            android:layout_centerVertical="true"/>
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:src="@mipmap/scan"
+            android:id="@+id/scan_actionbar"/>
+    </RelativeLayout>
+
+</RelativeLayout>
