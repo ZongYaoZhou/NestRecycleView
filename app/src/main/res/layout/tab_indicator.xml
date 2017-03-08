@@ -8,13 +8,14 @@
                 android:id="@+id/item_tab_rl">
 
     <ImageView
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:id="@+id/icon_tab_indicator"
         android:layout_above="@+id/text_tab_indicator"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_tab_indicator"
+        android:textSize="11sp"
         android:textColor="@color/textcolor_tab"/>
 </LinearLayout>

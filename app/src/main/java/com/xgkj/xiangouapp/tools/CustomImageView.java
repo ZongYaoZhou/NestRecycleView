@@ -1,6 +1,7 @@
 package com.xgkj.xiangouapp.tools;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
@@ -11,16 +12,16 @@ import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.util.TypedValue;
 import android.widget.ImageView;
+
+import com.xgkj.xiangouapp.R;
 
 /**
  * Created by Administrator on 2017/2/24.
  */
 
 public class CustomImageView extends ImageView {
-    public static final int TYPE_DEFULTE = 0;//圆形
+    public static final int TYPE_DEFULTE = 0;//矩形
     public static final int TYPE_CIRCLE = 1;//圆形
     public static final int TYPE_ROUND = 2;//圆角矩形
     public static final int TYPE_OVAL = 3;//椭圆形
@@ -34,7 +35,7 @@ public class CustomImageView extends ImageView {
     private RectF mRect;
     private int mRoundRadius;
     private Matrix mMatrix;
-    private int mType = TYPE_DEFULTE;//记录是view的形状
+    private int mType;//记录是view的形状
 
 
     public CustomImageView(Context context) {
@@ -43,19 +44,26 @@ public class CustomImageView extends ImageView {
 
     public CustomImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initView();
+
+        initView(context,attrs);
     }
 
-    public CustomImageView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        initView();
-    }
+    private void initView(Context context, AttributeSet attrs) {
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.CustomImageView);
+        mType = array.getInteger(R.styleable.CustomImageView_civ_type,0);
+        mRoundRadius = array.getInteger(R.styleable.CustomImageView_civ_roundradius,0);
+        setType(mType);
+        array.recycle();
 
-    private void initView() {
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mMatrix = new Matrix();
         mRoundRadius=DEFAUT_ROUND_RADIUS;
+    }
+
+    public CustomImageView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, 0);
+//        initView(context);
     }
 
     @Override
@@ -142,16 +150,6 @@ public class CustomImageView extends ImageView {
         mRect = new RectF(0,0,getWidth(),getHeight());
     }
 
-    //单位dp转单位px
-    public int dpTopx(int dp){
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dp, getResources().getDisplayMetrics());
-    }
-    //单位sp转单位px
-    public static int spTopx(Context context, float spValue) {
-        float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
-        return (int) (spValue * fontScale + 0.5f);
-    }
-
     public int getType() {
         return mType;
     }
@@ -163,7 +161,7 @@ public class CustomImageView extends ImageView {
     public void setType(int mType) {
         if (this.mType != mType) {
             this.mType =mType;
-            Log.e("setType", "setType: "+ mType);
+//            Log.e("setType", "setType: "+ mType);
             invalidate();
         }
     }

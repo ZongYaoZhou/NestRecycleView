@@ -2,17 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
-    android:background="@color/homeBgColor">
-
-    <include layout="@layout/custom_actionbar"
-             android:id="@+id/topbar"/>
+              android:layout_height="match_parent">
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:id="@+id/tv_frag"/>-->
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rv_frag_home"
-        android:layout_marginTop="5dp"
-        android:scrollbars="vertical">
+        android:id="@+id/cart_rv">
+
     </android.support.v7.widget.RecyclerView>
 </LinearLayout>

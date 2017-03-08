@@ -39,6 +39,7 @@
                 android:id="@+id/ovalView"
                 android:src="@mipmap/girl_h"/>
         </LinearLayout>
+
     </ScrollView>
 
 </LinearLayout>
