@@ -3,6 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+              android:layout_marginBottom="5dp"
               android:background="@color/whiteBgColor">
 
     <LinearLayout
@@ -36,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/icon_goto"
-            android:id="@+id/all_enter_title_boutique_recycle"
+            android:id="@+id/enterseeall_boutique_recycle"
             android:text="全部"
             android:textSize="12sp"
             android:gravity="center" />
@@ -45,6 +46,5 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
         android:id="@+id/child_boutique_recycle"></android.support.v7.widget.RecyclerView>
 </LinearLayout>

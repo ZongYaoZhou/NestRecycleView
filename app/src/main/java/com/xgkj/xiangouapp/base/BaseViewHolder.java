@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.xgkj.xiangouapp.tools.CustomImageView;
+import com.youth.banner.Banner;
 
 /**
  * Created by Administrator on 2017/3/6.
@@ -41,22 +42,29 @@ public class BaseViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         return holder;
     }
 
+    /**
+     * 通过ID获取控件
+     * @param id
+     * @return
+     */
     public View getView(int id) {
         return findView(id);
     }
-
     public TextView getTextView(int id){
         return findView(id);
     }
-
     public ImageView getImageView(int id){
         return findView(id);
     }
-
     public Button getButton(int id){
         return findView(id);
     }
-
+    public RecyclerView getRecyclerView(int id){
+        return findView(id);
+    }
+    public Banner getBanner(int id){
+        return findView(id);
+    }
     public CustomImageView getCustomView(int id){
         return findView(id);
     }

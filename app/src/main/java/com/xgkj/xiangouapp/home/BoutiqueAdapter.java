@@ -24,16 +24,10 @@ public class BoutiqueAdapter extends SimpleAdapter<ChildHomeBean>{
 
     @Override
     protected void bindData(BaseViewHolder holder, ChildHomeBean childHomeBean) {
-        Log.e("if ", "BoutiqueAdapter: "+
-                holder.getCustomView(R.id.civ_item_boutique_recycle).getId()+"---tv----"+holder.getTextView(R.id.tv_item_boutique_recycle).getText());
-//        if (childHomeBean.getImgSrc()!=0){
             CustomImageView mCustomImageView = holder.getCustomView(R.id.civ_item_boutique_recycle);
             mCustomImageView.setImageResource(childHomeBean.getImgSrc());
 //            ContextUtils.setLayoutParams(1,250,250,mCustomImageView);
             TextView mTextView = holder.getTextView(R.id.tv_item_boutique_recycle);
             mTextView.setText(childHomeBean.getTitle());
-        Log.e("not null", "BoutiqueAdapter: mCustomImageView="+
-            mCustomImageView.getId()+"---mTextView="+mTextView.getText());
-//        }
     }
 }

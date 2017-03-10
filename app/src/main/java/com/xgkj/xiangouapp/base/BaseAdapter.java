@@ -29,15 +29,16 @@ public abstract class BaseAdapter< T, H extends BaseViewHolder> extends Recycler
     public void setOnMineItemClickListener(OnMineItemClickListener mOnItemClickListener) {
         this.mOnItemClickListener = mOnItemClickListener;
     }
-    public void setOnMineItemLongClickListenter(OnMineItemClickListener mOnItemClickListener){
-        this.mOnItemClickListener = mOnItemClickListener;
-    }
 
+    public BaseAdapter(Context context, List<T> mDatas) {
+        mContext = context;
+        this.mDatas = mDatas;
+        setLayoutResId(mLayoutResId);
+    }
     public BaseAdapter(Context context, int mLayoutResId, List<T> mDatas) {
         mContext = context;
         this.mDatas = mDatas;
-        this.mLayoutResId = mLayoutResId;
-//        mOnItemClickListener = onItemClickListener;
+        setLayoutResId(mLayoutResId);
     }
 
     protected abstract void bindData(BaseViewHolder holder, T t);
@@ -62,6 +63,9 @@ public abstract class BaseAdapter< T, H extends BaseViewHolder> extends Recycler
         return mDatas.size();
     }
 
+    public void setLayoutResId(int layoutResId) {
+        this.mLayoutResId = layoutResId;
+    }
 
     public T getItem(int position){
         return mDatas.get(position);

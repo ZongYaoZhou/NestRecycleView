@@ -18,4 +18,9 @@
         <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackgroundColor</item>
         <item name="android:windowBackground">@style/WindowTitleBackgroundColor</item>
     </style>
+
+    <!--自定义tablayoutstyle-->
+    <style name="MyTabLayoutStyle" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+    </style>
 </resources>

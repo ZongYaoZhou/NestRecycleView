@@ -12,10 +12,9 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.xgkj.xiangouapp.fragment.CartFragment;
-import com.xgkj.xiangouapp.fragment.ClassifyFragment;
 import com.xgkj.xiangouapp.home.HomeFragment;
 import com.xgkj.xiangouapp.fragment.MineFragment;
-import com.xgkj.xiangouapp.fragment.NearbyFragment;
+import com.xgkj.xiangouapp.nearby.NearbyFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         Tab mine = new Tab(R.string.mine,R.drawable.icon_mine_select,MineFragment.class);
         mTabs = new ArrayList<>();
         mTabs.add(home);
-//        mTabs.add(classify);
         mTabs.add(nearby);
         mTabs.add(cart);
         mTabs.add(mine);
@@ -66,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         //去掉分隔线
         mFragmentTabHost.getTabWidget().setShowDividers(LinearLayout.SHOW_DIVIDER_NONE);
         //开始默认选中第一个tab
-        mFragmentTabHost.setCurrentTab(0);
+        mFragmentTabHost.setCurrentTab(1);
 
         //设置tab监听--i是tab的下标
 //        mFragmentTabHost.getTabWidget().getChildAt(i).setOnClickListener(new View.OnClickListener() {
@@ -78,10 +76,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //初始化底栏的tab
     private View buildIndicator(Tab tab) {
         View view =mInflater.inflate(R.layout.tab_indicator,null);
 
-//        RelativeLayout rl = (RelativeLayout) view.findViewById(R.id.item_tab_rl);
         ImageView img = (ImageView) view.findViewById(R.id.icon_tab_indicator);
         TextView text = (TextView) view.findViewById(R.id.text_tab_indicator);
 

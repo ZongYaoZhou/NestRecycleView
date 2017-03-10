@@ -12,6 +12,7 @@
     <color name="grayBgColor">#d2d2d2</color>
     <color name="whiteBgColor">#ffffff</color>
     <color name="homeBgColor">#f8f8f8</color>
+    <color name="nearbyTabLine">#e20755</color>
     <color name="textcolor_black">#f5060002</color>
     <color name="textcolor_referrals">#e6000000</color>
     <color name="textcolor_adr">#cc050505</color>

@@ -6,13 +6,13 @@
     android:background="@color/homeBgColor">
 
     <include layout="@layout/custom_actionbar"
-             android:id="@+id/topbar"/>
+             android:id="@+id/topbar_home"/>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/rv_frag_home"
-        android:layout_marginTop="5dp"
-        android:scrollbars="vertical">
+        android:scrollbars="none"
+        android:background="@color/homeBgColor">
     </android.support.v7.widget.RecyclerView>
 </LinearLayout>

@@ -3,7 +3,8 @@
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content"
+              android:background="@color/whiteBgColor">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/icon_goto"
-            android:id="@+id/all_enter"
+            android:id="@+id/enterseeall_topic"
             android:text="全部"
             android:textSize="15sp"
             android:gravity="center" />
@@ -51,7 +52,8 @@
             android:id="@+id/advs_topic_civ"
             android:src="@mipmap/girl_h"
             app:civ_type="TYPE_ROUND"
-            app:civ_roundradius="10"/>
+            app:civ_roundradius="10"
+            android:scaleType="matrix"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="16dp"

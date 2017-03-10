@@ -8,23 +8,45 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.xgkj.xiangouapp.R;
+import com.xgkj.xiangouapp.base.BaseAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Administrator on 2017/2/28.
  */
 
 public class HomeFragment extends Fragment implements View.OnClickListener{
-//
-//    private ChildHomeBean boutique,referrals;
-//    private ImageWithText mReferralsIWT;
-//    private ImageWithText mBoutiqueIWT;
-    private View mFragView;
 
+    @BindView(R.id.addrtv_topbar)
+    TextView mAddrTv;
+    @BindView(R.id.serach_topbar_tv)
+    TextView mSearchTv;
+    @BindView(R.id.news_num_topbar_tv)
+    TextView mNewsTv;
+    @BindView(R.id.search_topbar_iv)
+    ImageView mSearchIv;
+    @BindView(R.id.scan_topbar_iv)
+    ImageView mScanIv;
+    @BindView(R.id.news_topbar_iv)
+    ImageView mNewsIv;
+    //不同recycle的type
+    public static final int TYPE_DEFAULT = 0;
+    public static final int TYPE_BANNER = 1;
+    public static final int TYPE_BOUTIQUE = 2;
+    public static final int TYPE_REFERRALS = 3;
+    public static final int TYPE_ADVS = 4;
+    public static final int TYPE_TOPIC = 5;
+    private View mFragView;
     public static HomeFragment newInstance() {
         HomeFragment homeFrag = new HomeFragment();
         return homeFrag;
@@ -40,12 +62,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mFragView = inflater.inflate(R.layout.fragment_home,container,false);
 
-//        //初始化Banner
-//        initData();
-//        initBanner(view);
-//        //
-//        initBoutique(view);
-//        initReferrals(view);
+        ButterKnife.bind(this,mFragView);
         initView();
 
         return mFragView;
@@ -53,61 +70,48 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     }
 
     private void initView() {
-
+        mAddrTv.setOnClickListener(this);
+        mNewsTv.setOnClickListener(this);
+        mNewsIv.setOnClickListener(this);
+        mScanIv.setOnClickListener(this);
+        mSearchIv.setOnClickListener(this);
+        mSearchTv.setOnClickListener(this);
         RecyclerView rvHome = (RecyclerView) mFragView.findViewById(R.id.rv_frag_home);
         GridLayoutManager glm = new GridLayoutManager(getContext(),60,GridLayoutManager.VERTICAL,false);
         rvHome.setLayoutManager(glm);
 
-        List<ChildHomeBean> childHomeBeanList = new ArrayList<ChildHomeBean>();
-        childHomeBeanList.add(new ChildHomeBean("", "my titles develop by random1"));
-        childHomeBeanList.add(new ChildHomeBean("", "my titles develop by random2"));
-        childHomeBeanList.add(new ChildHomeBean("", "my titles develop by random3"));
-        childHomeBeanList.add(new ChildHomeBean("", "my titles develop by moremoremoremoremoremoremoremore random4"));
-        childHomeBeanList.add(new ChildHomeBean("", "my titles develop by random5"));
-        childHomeBeanList.add(new ChildHomeBean("", "my titles develop by moremoremoremoremoremoremoremore random6"));
-        childHomeBeanList.add(new ChildHomeBean("", "my titles develop by random7"));
-        childHomeBeanList.add(new ChildHomeBean("", "my titles develop by moremoremoremoremoremoremoremore random8"));
+        List<HomeChildBean> beanList = new ArrayList<>();
+        beanList.add(new HomeChildBean(TYPE_BANNER));
+        beanList.add(new HomeChildBean(TYPE_BOUTIQUE));
+        beanList.add(new HomeChildBean(TYPE_REFERRALS));
+        beanList.add(new HomeChildBean(TYPE_ADVS));
+        beanList.add(new HomeChildBean(TYPE_TOPIC));
+        HomeAdapter adapterHomeRv = new HomeAdapter(getContext(),beanList);
+        adapterHomeRv.setOnMineItemClickListener(new BaseAdapter.OnMineItemClickListener() {
+            @Override
+            public void onMineItemClick(View view, int position) {
 
-        AdapterRvHome adapterRvHome = new AdapterRvHome(getContext(),childHomeBeanList);
-        rvHome.setAdapter(adapterRvHome);
+            }
 
-    }
+            @Override
+            public void onMineItemLongClick(View view, int position) {
 
-//    private void initReferrals(View view) {
-//        referrals = new ChildHomeBean();
-//        referrals.mLinearLayout = (LinearLayout) view.findViewById(R.id.referrals_home).findViewById(R.id.childmode_shop_home);
-//        LinearLayout.LayoutParams mLParms = new LinearLayout.LayoutParams(
-//                ViewGroup.LayoutParams.MATCH_PARENT,dpTopx(180));
-//        referrals.mLinearLayout.setLayoutParams(mLParms);
-//        referrals.mChildIcon = (ImageView) view.findViewById(R.id.referrals_home).findViewById(R.id.icon_child_shop);
-//        referrals.mChildtext = (TextView) view.findViewById(R.id.referrals_home).findViewById(R.id.text_child_shop);
-//        referrals.mEnterchildtext = (TextView) view.findViewById(R.id.referrals_home).findViewById(R.id.all_enter);
-//        referrals.mRecyclerView = (RecyclerView) view.findViewById(R.id.referrals_home).findViewById(R.id.recyclev_shop_home);
-//        referrals.mChildIcon.setImageResource(R.mipmap.goods);
-//        referrals.mChildtext.setText("商品推荐");
-//        referrals.mEnterchildtext.setOnClickListener(this);
-//
-////            referralsIWT.setImageType(CustomImageView.TYPE_ROUND);
-//        mReferralsIWT.getCiv().setImageResource(R.mipmap.girl_v);
-//        mReferralsIWT.getCiv().setType(CustomImageView.TYPE_ROUND);
-//        mReferralsIWT.getTv().setText("侣朋友");
-//        mReferralsIWT.getTv().setTextColor(getResources().getColor(R.color.black_textcolor));
-//    }
+            }
+        });
+        rvHome.setAdapter(adapterHomeRv);
 
-    @Override
-    public void onStart() {
-        super.onStart();
-//        homeBanner.startAutoPlay();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-//        homeBanner.stopAutoPlay();
     }
 
     @Override
     public void onClick(View v) {
-
+        if (v == mAddrTv){
+            Toast.makeText(getContext(), "四海为家，浪迹天涯", Toast.LENGTH_SHORT).show();
+        }else if (v==mSearchIv || v==mSearchTv){
+            Toast.makeText(getContext(), "众里寻他千百度", Toast.LENGTH_SHORT).show();
+        }else if (v == mScanIv){
+            Toast.makeText(getContext(), "扫一扫，红包跑不了", Toast.LENGTH_SHORT).show();
+        }else if (v==mNewsIv || v==mNewsTv){
+            Toast.makeText(getContext(), "机事不密是为祸", Toast.LENGTH_SHORT).show();
+        }
     }
 }

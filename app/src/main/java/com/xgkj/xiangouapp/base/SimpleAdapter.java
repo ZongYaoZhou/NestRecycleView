@@ -9,6 +9,9 @@ import java.util.List;
  */
 
 public abstract class SimpleAdapter<T> extends BaseAdapter<T,BaseViewHolder>{
+    public SimpleAdapter(Context context, List<T> mDatas) {
+        super(context, mDatas);
+    }
 
     public SimpleAdapter(Context context, int mLayoutResId, List<T> mDatas) {
         super(context, mLayoutResId, mDatas);

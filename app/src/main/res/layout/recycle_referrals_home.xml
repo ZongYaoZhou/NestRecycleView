@@ -34,10 +34,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/icon_goto"
-            android:id="@+id/all_enter_title_referrals_home"
+            android:id="@+id/enterseeall_referrals_recycle"
             android:text="全部"
             android:textSize="12sp"
-            android:gravity="center"/>
+            android:gravity="center" />
     </LinearLayout>
 
    <android.support.v7.widget.RecyclerView

@@ -23,13 +23,10 @@ public class ReferralsAdapter extends SimpleAdapter<ChildHomeBean>{
     @Override
     protected void bindData(BaseViewHolder holder, ChildHomeBean childHomeBean) {
         Log.e("childHomeBean", "ReferralsAdapter: "+childHomeBean.toString() );
-//        if (holder.itemView.isInLayout() && childHomeBean.getImgSrc()!=0) {
             CustomImageView mCustomImageView = holder.getCustomView(R.id.civ_item_referrals_recycle);
             mCustomImageView.setImageResource(childHomeBean.getImgSrc());
 //            ContextUtils.setLayoutParams(1,250,250,mCustomImageView);
-
             TextView mTextView = holder.getTextView(R.id.tv_item_referrals_recycle);
             mTextView.setText(childHomeBean.getTitle());
-//        }
     }
 }
